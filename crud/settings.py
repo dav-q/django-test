@@ -28,6 +28,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DJANGO_DEBUG',default=False)
 
 ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOST',default=[]))
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'api',
     'apidrf',
     'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +54,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'crud.urls'
 

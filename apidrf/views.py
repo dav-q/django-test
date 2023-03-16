@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.hashers import  check_password
 from rest_framework import status
+from django.forms.models import model_to_dict
 from .models import Client
 import json
 
@@ -18,6 +19,6 @@ def login(request):
         isAuth = check_password(data['password'], client.password)
         if isAuth:
             status_code=status.HTTP_200_OK
-            response = {'status':'Success','auth':isAuth}
+            response = {'status':'Success','auth':isAuth,'userData':model_to_dict(client)}
 
     return Response(response,status=status_code)
