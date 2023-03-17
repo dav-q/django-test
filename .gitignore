@@ -2,7 +2,8 @@
 ./crud/__pycache__/
 ./apidrf/__pycache__/
 *.py[cod]
-
+*.pyc
+*.log
 # C extensions
 *.so
 
